@@ -1,12 +1,20 @@
 
-import GalleryItem from './GalleryItem'
+import { useState } from 'react'
 
-function Gallery(props){
+function SearchBar(props) {
+    let [searchTerm, setSearchTerm] = useState('')
+
     return (
-        <div>
-            <GalleryItem />
-        </div>
+        <form onSubmit={(e) => props.handleSearch(e, searchTerm)}>
+
+            <input type="text" placeholder="Enter a search term here" onChange={
+                (e) => setSearchTerm(e.target.value)
+            } />
+
+            <input type="submit" />
+
+        </form>
     )
 }
 
-export default Gallery
+export default SearchBar
